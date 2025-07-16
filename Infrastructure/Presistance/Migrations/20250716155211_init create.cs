@@ -5,13 +5,13 @@
 namespace Persistance.Migrations
 {
     /// <inheritdoc />
-    public partial class intialCreate : Migration
+    public partial class initcreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "ProductBrand",
+                name: "ProductBrands",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -20,11 +20,11 @@ namespace Persistance.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductBrand", x => x.Id);
+                    table.PrimaryKey("PK_ProductBrands", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProductType",
+                name: "ProductTypes",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -33,7 +33,7 @@ namespace Persistance.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductType", x => x.Id);
+                    table.PrimaryKey("PK_ProductTypes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -45,7 +45,7 @@ namespace Persistance.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,3)", nullable: false),
-                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PictureUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     BrandId = table.Column<int>(type: "int", nullable: false),
                     TypeId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -53,15 +53,15 @@ namespace Persistance.Migrations
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Products_ProductBrand_BrandId",
+                        name: "FK_Products_ProductBrands_BrandId",
                         column: x => x.BrandId,
-                        principalTable: "ProductBrand",
+                        principalTable: "ProductBrands",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Products_ProductType_TypeId",
+                        name: "FK_Products_ProductTypes_TypeId",
                         column: x => x.TypeId,
-                        principalTable: "ProductType",
+                        principalTable: "ProductTypes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -84,10 +84,10 @@ namespace Persistance.Migrations
                 name: "Products");
 
             migrationBuilder.DropTable(
-                name: "ProductBrand");
+                name: "ProductBrands");
 
             migrationBuilder.DropTable(
-                name: "ProductType");
+                name: "ProductTypes");
         }
     }
 }

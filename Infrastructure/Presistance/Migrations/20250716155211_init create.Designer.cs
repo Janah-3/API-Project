@@ -11,8 +11,8 @@ using Persistance;
 namespace Persistance.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250702011742_intialCreate")]
-    partial class intialCreate
+    [Migration("20250716155211_init create")]
+    partial class initcreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,11 +39,11 @@ namespace Persistance.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ImageUrl")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("PictureUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -76,7 +76,7 @@ namespace Persistance.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ProductBrand");
+                    b.ToTable("ProductBrands");
                 });
 
             modelBuilder.Entity("Domain.Entities.ProductType", b =>
@@ -93,7 +93,7 @@ namespace Persistance.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ProductType");
+                    b.ToTable("ProductTypes");
                 });
 
             modelBuilder.Entity("Domain.Entities.Product", b =>
